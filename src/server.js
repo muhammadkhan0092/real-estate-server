@@ -1,3 +1,4 @@
+import models from "./models/index.js"
 import sequelize from "./config/dbConfig.js";
 import app from "./app.js";
 import env from "./config/env.js";
