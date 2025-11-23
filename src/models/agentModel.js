@@ -6,6 +6,9 @@ const agentModel = sequelize.define("agentModel",{
         autoIncrement:true,
         type:DataTypes.INTEGER
     },
+    agentImage:{
+        type:DataTypes.STRING
+    },
     name:{
         type:DataTypes.STRING
     },
