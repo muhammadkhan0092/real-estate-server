@@ -38,9 +38,12 @@ const apartmentModel = sequelize.define("apartmentModel",{
             constants.laundry
         )
     },
-    images:{
+    image:{
+        type:DataTypes.STRING,
+    },
+    galleryImages:{
         type:DataTypes.JSON,
-        defaultValue:[]
+        defaultValue:[]   
     }
 });
 export default apartmentModel;
