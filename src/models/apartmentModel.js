@@ -7,8 +7,8 @@ const apartmentModel = sequelize.define("apartmentModel",{
         autoIncrement:true,
         type:DataTypes.INTEGER
     },
-    name:{
-        type:DataTypes.ENUM("Apartment","Villa")
+    apartmentName:{
+        type:DataTypes.STRING
     },
     overview:{
         type:DataTypes.STRING,
@@ -39,7 +39,7 @@ const apartmentModel = sequelize.define("apartmentModel",{
         )
     },
     image:{
-        type:DataTypes.STRING,
+        type:DataTypes.TEXT,
     },
     galleryImages:{
         type:DataTypes.JSON,
