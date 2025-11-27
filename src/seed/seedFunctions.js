@@ -6,6 +6,7 @@ import {
 } from "./seedImages.js";
 import models from "../models/index.js"
 import constants from "../utils/constants.js";
+import reviewModel from "../models/reviewModel.js";
 const agentModel = models.agentModel;
 const apartmentModel = models.apartmentModel;
 const reviewsModel = models.reviewModel;
@@ -61,12 +62,25 @@ const overView = [
 const facilitiesList = [
    constants.carParking,
    constants.swimming,
-            constants.gymAndFitness,
-            constants.restraunt,
-            constants.wifiAndNetwork,
-            constants.petCenter,
-            constants.sportsCenter,
-            constants.laundry
+   constants.gymAndFitness,
+   constants.restraunt,
+   constants.wifiAndNetwork,
+   constants.petCenter,
+   constants.sportsCenter,
+   constants.laundry
+];
+const reviewList = [
+  "Nicely Furnished",
+  "Good View",
+  "Beutiful",
+  "Nice",
+  "Good Parking",
+  "Nice Experience Working with them",
+  "Good",
+  "Big Rooms",
+  "Nice Ventiallation",
+  "Good Lifts",
+  "The Number of Lifts are sufficient"
 ]
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -100,7 +114,7 @@ const seed = async()=>{
     const bedRooms = getRandomInt(2,5);
     const bathRooms = getRandomInt(1,bedRooms);
     const facility = facilitiesList[getRandomInt(0,6)];
-  const pI = propertiesImages.slice(0,getRandomInt(1,13)).toString();
+    const pI = propertiesImages.slice(0,getRandomInt(1,13)).toString();
   const GI = propertiesImages.slice(0,getRandomInt(1,13)).toString();
   const result = await apartmentModel.create({
     agentIdF:agentId,
@@ -113,8 +127,20 @@ const seed = async()=>{
     image:pI,
     galleryImages:GI
   });
-  console.log("Result is ",result);
+  console.log("Apartment Completed");
   }
+  for(let index = 0;index<300;index++){
+    const reviewIndex = getRandomInt(0,10);
+    const reviewTxt = reviewList[reviewIndex];
+    const apartmentIdIndex = getRandomInt(2,99);
+    const rating = getRandomFloat(1.0,5.0);
+    await reviewModel.create({
+      reviewText:reviewTxt,
+      rating:rating,
+      apartmentIdF:apartmentIdIndex
+    });
+  }
+  console.log("Review Completed Successfully");
 }
 
 export default seed;
