@@ -5,9 +5,9 @@ import env from "./config/env.js";
 import seed from "./seed/seedFunctions.js";
 async function startServer(params) {
     try{
-        sequelize.authenticate();
+        await sequelize.authenticate();
         console.log("DB CONNECTED");
-        sequelize.sync();
+        await sequelize.sync();
         console.log("DB SYNCED");
         app.listen(env.port,(err)=>{
             if(err) console.log("Server Starting Failed");

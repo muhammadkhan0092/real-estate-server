@@ -91,19 +91,19 @@ function getRandomFloat(min, max) {
   return Math.random() * (max - min) + min;
 }
 const seed = async()=>{
-    console.log("Agent Creation Started");
-    for (let index = 0; index < 5; index++) {
-        const contactNumber = getRandomInt(920000,930000);
-        const contactName = agentNames[index];
-        const agentDesignation = agentDesignations[index];
-        const img = agentImages[index];
-        await agentModel.create({
-        name:contactName,
-        agentImage:img,
-        designation:agentDesignation,
-        contactNumber:contactNumber
-    });
-  }
+  //   console.log("Agent Creation Started");
+  //   for (let index = 0; index < 5; index++) {
+  //       const contactNumber = getRandomInt(920000,930000);
+  //       const contactName = agentNames[index];
+  //       const agentDesignation = agentDesignations[index];
+  //       const img = agentImages[index];
+  //       await agentModel.create({
+  //       name:contactName,
+  //       agentImage:img,
+  //       designation:agentDesignation,
+  //       contactNumber:contactNumber
+  //   });
+  // }
   console.log("Agents Creation Completed");
   for(let index = 0;index<100;index++){
     const agentId = getRandomInt(1,3);
@@ -114,6 +114,7 @@ const seed = async()=>{
     const bedRooms = getRandomInt(2,5);
     const bathRooms = getRandomInt(1,bedRooms);
     const facility = facilitiesList[getRandomInt(0,6)];
+      console.log("FACILITY IS ",facility);
     const pI = propertiesImages.slice(0,getRandomInt(1,13)).toString();
   const GI = propertiesImages.slice(0,getRandomInt(1,13)).toString();
   const result = await apartmentModel.create({
@@ -123,7 +124,7 @@ const seed = async()=>{
     price:price,
     bathRooms:bathRooms,
     bedRooms:bedRooms,
-    facility:facility,
+    facilities:facility,
     image:pI,
     galleryImages:GI
   });
