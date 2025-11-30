@@ -17,13 +17,6 @@ export const getSingleApartmentByApartmentIdWithAgentAndAllReviews = async(apart
         ]
     });
 };
-export const getAllApartmentsWithLimitedColumn = async()=>{
-    return await apartmentModel.findAll(
-        {
-            include:['apartmentId','image','apartmentName','price']
-        }
-    );
-};
 export const getAllApartmentWithNameAndPrice = async()=>{
     return await apartmentModel.findAll(
         {

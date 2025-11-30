@@ -17,9 +17,6 @@ const apartmentModel = sequelize.define("apartmentModel",{
     price:{
         type:DataTypes.INTEGER
     },
-    bedRooms:{
-        type:DataTypes.INTEGER
-    },
     bathRooms:{
         type:DataTypes.INTEGER
     },
