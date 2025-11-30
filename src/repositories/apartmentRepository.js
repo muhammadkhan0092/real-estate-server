@@ -1,4 +1,4 @@
-import models from "../models"
+import models from "../models/index.js"
 const agentModel = models.agentModel;
 const apartmentModel = models.apartmentModel;
 const reviewsModel = models.reviewModel;
@@ -24,3 +24,17 @@ export const getAllApartmentsWithLimitedColumn = async()=>{
         }
     );
 };
+export const getAllApartmentWithNameAndPrice = async()=>{
+    return await apartmentModel.findAll(
+        {
+            attributes:['apartmentId','apartmentName','price'],
+            include:[
+                {
+                    model:reviewsModel,
+                    as:'reviews',
+                    attributes:['rating']
+                }
+            ]
+        }
+    );
+}
