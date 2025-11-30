@@ -42,4 +42,7 @@ export const getAllApartments= async()=>{
         averageRating: avg
     }});
     console.log(JSON.stringify(mappedResult, null, 2));
-}
+};
+export const getSearchedApartments = async()=>{
+
+};

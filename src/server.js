@@ -3,7 +3,7 @@ import sequelize from "./config/dbConfig.js";
 import app from "./app.js";
 import env from "./config/env.js";
 import seed from "./seed/seedFunctions.js";
-import { getAllApartmentWithNameAndPrice } from "./repositories/apartmentRepository.js";
+import { getAllApartmentsWithSearch, getAllApartmentWithNameAndPrice } from "./repositories/apartmentRepository.js";
 import { getSingleApartment,getAllApartments } from "./services/apartmentService.js";
 async function startServer(params) {
     try{
@@ -15,7 +15,6 @@ async function startServer(params) {
             if(err) console.log("Server Starting Failed");
             else console.log("Server Started At Port ",env.port);
         });
-        const mappedApartments = await getAllApartments();
     }
     catch(err){
         console.log(err);
