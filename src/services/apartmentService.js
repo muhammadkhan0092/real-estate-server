@@ -1,4 +1,4 @@
-import { getAllApartmentWithNameAndPrice, getSingleApartmentByApartmentIdWithAgentAndAllReviews } from "../repositories/apartmentRepository.js"
+import { getAllApartmentsWithSearch, getAllApartmentWithNameAndPrice, getSingleApartmentByApartmentIdWithAgentAndAllReviews } from "../repositories/apartmentRepository.js"
 
 export const getSingleApartment = async()=>{
     const item = await getSingleApartmentByApartmentIdWithAgentAndAllReviews(1);
@@ -41,8 +41,8 @@ export const getAllApartments= async()=>{
         price: item.price,
         averageRating: avg
     }});
-    console.log(JSON.stringify(mappedResult, null, 2));
+   return mappedResult;
 };
 export const getSearchedApartments = async()=>{
-
+    return await getAllApartmentsWithSearch();
 };
